@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError, EMPTY, Observable, take, tap } from 'rxjs';
 import { API_URL } from '../configs/main-config';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
     providedIn: 'root'
@@ -14,12 +15,14 @@ export class AuthService {
     private localsStorageService = inject(LocalStorageService);
     private router = inject(Router);
     private httpClient = inject(HttpClient);
+    private snackBar = inject(MatSnackBar);
 
     logIn(user: UserCredential ):Observable<UserCredential>{
         return this.httpClient.post<UserCredential>(`${this.apiUrl}/v1/auth/login`, user)
         .pipe(
             catchError((err) => {
                     console.error('Auth Erorr', err);
+                    this.snackBar.open(`You need to register`, 'Close');
                     return EMPTY
                 }
             ),

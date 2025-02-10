@@ -50,7 +50,6 @@ export class DashboardComponent implements AfterViewInit {
 	cangeStatusList: UsetsStatusList[] = this.currentUser.role === 'REVIEWER' ? STATUS_LIST_REVIEWER : STATUS_LIST_USER;
 	listCreator: CreatorList[] = [];
 	authService = inject(AuthService);
-	// STATUS_VIEW = STATUS_VIEW;
 
 	readonly dialog = inject(MatDialog);
 	private dashboardService = inject(DashboardService);
@@ -62,7 +61,6 @@ export class DashboardComponent implements AfterViewInit {
 	private snackBar = inject(MatSnackBar);
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 	@ViewChild(MatSort) sort!: MatSort;
-	@ViewChild(MatMenu) chengeDocMatMenu!: QueryList<MatMenu>;
 	@ViewChildren(MatMenuTrigger) menuTriggers!: QueryList<MatMenuTrigger>;
 
 	ngAfterViewInit () {
