@@ -81,8 +81,6 @@ export class DashboardComponent implements AfterViewInit {
 
 	fetchData(): void {
 		this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-
-		this.sort.sortChange.subscribe((data) => console.log('data'));
 		merge(this.sort.sortChange, this.paginator.page)
 			.pipe(
 				takeUntilDestroyed(this.destroyRef),
