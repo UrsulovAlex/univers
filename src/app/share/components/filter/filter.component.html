@@ -1,0 +1,43 @@
+<div class="filter mt-16 mb-24">
+    <h3>Filter</h3>
+    <div class="filter__block">
+        <mat-form-field class="mr-4" subscriptSizing="dynamic">
+            <mat-label>Filter by documnet status</mat-label>
+            <mat-select (selectionChange)="selectStatus($event, 'status')" [value]="selectedValue()['status']">
+                @for (status of statusFilter(); track status.value) {
+                    @if(userRole() === 'REVIEWER' && status.value !== 'DRAFT') {
+                        <mat-option [value]="status.value">{{status.name}}</mat-option>
+                    } @else if (userRole() === 'USER') {
+                        <mat-option [value]="status.value">{{status.name}}</mat-option>
+                    }
+                }
+            </mat-select>
+        </mat-form-field>
+        <button mat-icon-button 
+            matTooltip="Clear select"
+            [matTooltipPosition]="'above'"
+            (click)="clearFilters('status')"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    @if(userRole() === 'REVIEWER') {
+        <div class="filter__block">
+            <mat-form-field class="mr-4" subscriptSizing="dynamic">
+                <mat-label>Filter by creator</mat-label>
+                <mat-select (selectionChange)="selectStatus($event, 'creator')" [value]="selectedValue()['creator']">
+                    @for (creator of creatorList(); track creator.id) {
+                        <mat-option [value]="creator.id">{{creator.fullName}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <button mat-icon-button 
+                matTooltip="Clear creator filter"
+                [matTooltipPosition]="'above'"
+                (click)="clearFilters('creator')"
+                >
+            <mat-icon>close</mat-icon>
+        </button>
+        </div>
+    }
+</div>

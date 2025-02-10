@@ -1,0 +1,9 @@
+.filter {
+    display: flex;
+    gap: 24px;
+
+    &__block {
+        display: flex;
+        align-items: center;
+    }
+}

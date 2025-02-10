@@ -1,0 +1,26 @@
+.file-conteiner-input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    input[type=file] {
+        opacity: 0; 
+        position:absolute; 
+        left:0px; 
+        top:0px; 
+        width:100%; 
+        height:100%;
+    }
+}
+
+.file-name {
+    display: inline-block;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+.upload-button {
+    border-radius: 5px; 
+    cursor: pointer;
+}

@@ -1,0 +1,1 @@
+export const API_URL = 'https://legaltech-testing.coobrick.app/api';

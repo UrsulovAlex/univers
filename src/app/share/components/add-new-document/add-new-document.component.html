@@ -1,0 +1,26 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+    <mat-dialog-content class="mat-typography h-100">
+        <div class="file-conteiner-input mb-12 mt-16 w-100">
+            <button mat-flat-button class="w-100 upload-button">
+                Add new document
+                <input type="file" name="file" [(ngModel)]="formData().file" (change)="onFileSelected($event)" required accept="application/pdf" #file="ngModel" />
+            </button>
+        </div>
+        <mat-form-field class="w-100">
+            <mat-label>Select documnet status</mat-label>
+            <mat-select  name="status" [(ngModel)]="formData().status" #status="ngModel" required>
+                @for (status of data.status; track status.status) {
+                    <mat-option [value]="status.status">{{status.name}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <mat-label>Choose file name</mat-label>
+            <input matInput name="name" (change)="onChageFileName()" [(ngModel)]="formData().name" #name="ngModel">
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close class="mr-12">Cancel</button>
+        <button type="submit" mat-flat-button [disabled]="form.invalid">Add document</button>
+    </mat-dialog-actions>
+</form>
